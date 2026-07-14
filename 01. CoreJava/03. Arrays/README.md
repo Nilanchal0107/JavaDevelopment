@@ -90,14 +90,28 @@ int nums[][] = new int[3][4];   // 3 rows, 4 columns
 ```
 
 ### Filling with `Math.random()`
+
+> ⚠️ **Bug in original code** — The source file actually contains:
+
 ```java
 for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 4; j++) {
-        nums[i][j] = (int)(Math.random() * 10);   // random 0–9
+        nums[i][j] = (int)Math.random() * 100;  // ❌ BUG: cast happens before multiply → always 0
+        System.out.println(nums[i][j]);
+    }
+    System.out.println();
+}
+```
+
+> ⚠️ `(int)Math.random()*100` is a classic Java trap. `Math.random()` returns a `double` between 0.0 and 1.0. Casting it to `int` first gives `0` always, then `0 * 100 = 0`. The correct form is:
+
+```java
+for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 4; j++) {
+        nums[i][j] = (int)(Math.random() * 10);  // ✅ CORRECT: multiply first, then cast
     }
 }
 ```
-> ⚠️ `(int)Math.random()*100` is a common bug — due to operator precedence, cast happens first giving 0. Always write `(int)(Math.random()*100)`.
 
 ### Printing a 2D Array
 
@@ -271,6 +285,15 @@ for (int[] row : nums) {
 | Use case | When you need the index | When you just need values |
 
 > ⚠️ Use traditional `for` when you need the **index** or want to **modify** elements. Use enhanced `for` when you only need to **read** values.
+
+---
+
+## ⚠️ My Mistakes & Gaps
+
+> This section is filled in manually after solving practice questions.
+> Do NOT auto-generate this section.
+
+- 
 
 ---
 

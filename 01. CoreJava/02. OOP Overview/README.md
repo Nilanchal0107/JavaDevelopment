@@ -257,4 +257,13 @@ public class Demo {
 
 ---
 
-*Notes created from Telusko Java Tutorial — 01. CoreJava / 02. Fundamentals of OOP*
+## ⚠️ My Mistakes & Gaps
+
+> This section is filled in manually after solving practice questions.
+> Do NOT auto-generate this section.
+
+- 
+
+---
+
+*Notes created from Telusko Java Tutorial — 01. CoreJava / 02. OOP Overview*

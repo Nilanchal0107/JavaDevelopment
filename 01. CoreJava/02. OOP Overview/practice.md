@@ -177,4 +177,4 @@ r.show(5, 3.0);      // int and double — which method is called?
 
 ---
 
-*Practice file for 01. CoreJava / 02. Fundamentals of OOP — Telusko Java Tutorial*
+*Practice file for 01. CoreJava / 02. OOP Overview — Telusko Java Tutorial*

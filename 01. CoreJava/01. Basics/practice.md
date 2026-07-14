@@ -14,6 +14,11 @@ Write a Java program that stores your name in a `String` variable and prints:
 Hello, <your name>! Welcome to Java.
 ```
 
+**Expected Output (for name = "Nilanchal"):**
+```
+Hello, Nilanchal! Welcome to Java.
+```
+
 **Concepts:** Variables, `System.out.println()`
 
 ---

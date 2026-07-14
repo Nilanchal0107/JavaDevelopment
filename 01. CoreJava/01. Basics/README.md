@@ -490,4 +490,13 @@ for (; i <= 5;) {        // initialization & update can be moved outside
 
 ---
 
+## ⚠️ My Mistakes & Gaps
+
+> This section is filled in manually after solving practice questions.
+> Do NOT auto-generate this section.
+
+- 
+
+---
+
 *Notes created from Telusko Java Tutorial — 01. CoreJava / 01. Basics*
