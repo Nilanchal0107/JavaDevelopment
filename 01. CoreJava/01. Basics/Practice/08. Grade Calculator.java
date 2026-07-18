@@ -5,13 +5,13 @@ class GradeCalculator {
         if (marks >= 90) {
             System.out.println("Grade: A");
         }
-        else if (marks <= 89 && marks >= 75) {
+        else if (marks >= 75) {
             System.out.println("Grade: B");
         }
-        else if (marks <= 74 && marks >= 60) {
+        else if (marks >= 60) {
             System.out.println("Grade: C");
         }
-        else if (marks <= 59 && marks >= 45) {
+        else if (marks >= 45) {
             System.out.println("Grade: D");
         }
         else {

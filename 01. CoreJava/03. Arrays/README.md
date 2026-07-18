@@ -293,7 +293,13 @@ for (int[] row : nums) {
 > This section is filled in manually after solving practice questions.
 > Do NOT auto-generate this section.
 
-- 
+- array of objects requires explicit new for each slot, new Book[4] does not create Book objects, it creates 4 null references.
+
+- largest = 0 initialization bug — always use arr[0]
+
+- new Book[4] creates null references, not objects — need explicit new Book() per slot
+
+- String comparison with == is wrong in Java — always use .equals()
 
 ---
 
