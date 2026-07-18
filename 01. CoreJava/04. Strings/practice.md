@@ -116,7 +116,7 @@ Write a program that:
 1. Creates `String name = "navin"`.
 2. Assigns `name = name + "reddy"`.
 3. Prints `"hello" + name`.
-4. In a comment, explain why the original `"navin"` object is not changed even though `name` now holds `"navinreddy"`.
+4. In a comment, explain why the original `"navin"` object is not changed even though `name` now holds `"navinreddy" `.
 
 **Expected Output:**
 ```
