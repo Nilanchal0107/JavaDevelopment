@@ -11,13 +11,18 @@ class Employee {
     }
 
     Employee(int id, String name, double salary, String department) {
-        id = this.id;
-        name = this.name;
-        salary = this.salary;
-        department = this.department; 
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+        this.department = department; 
     }
 
-    Employee(Employee other) {}
+    Employee(Employee other) {
+        id = other.id;
+        name = other.name;
+        salary = other.salary;
+        department = other.department; 
+    }
 
     public int getId() {
         return id;
@@ -44,5 +49,27 @@ class Employee {
             this.salary = salary;
         }
     }
+
+    void printInfo() {
+        System.out.println(name);
+        System.out.println(id);
+        System.out.println(salary);
+        System.out.println(department);
+    }
 }
 
+class Test {
+    public static void main (String A[]) {
+        Employee e1 = new Employee();
+        e1.printInfo();
+
+        Employee e2 = new Employee(1, "Navin", 30000.0, "I.T");
+        e2.printInfo();
+
+        Employee e2Copy = new Employee(e2);
+
+        e2.setSalary(45000.0);
+
+        e2Copy.printInfo();
+    }
+}
