@@ -1,4 +1,4 @@
-﻿# 📘 Polymorphism — Notes
+# 📘 Polymorphism — Notes
 > Based on the Telusko YouTube channel tutorial by Navin Reddy
 
 ---
@@ -9,6 +9,7 @@
 3. [The `final` Keyword](#3-the-final-keyword)
 4. [Object Class — `equals()`, `toString()`, `hashCode()`](#4-object-class--equals-tostring-hashcode)
 5. [Upcasting and Downcasting](#5-upcasting-and-downcasting)
+6. [Autoboxing and Autounboxing](#6-autoboxing-and-autounboxing)
 
 ---
 
@@ -259,6 +260,50 @@ public class Demo {
 >     B obj1 = (B) obj;
 > }
 > ```
+
+---
+
+## 6. Autoboxing and Autounboxing
+
+Java has both **primitive types** (`int`, `double`, etc.) and their corresponding **Wrapper classes** (`Integer`, `Double`, etc.). Autoboxing and autounboxing let Java convert between them automatically.
+
+| Term | Direction | Description |
+|---|---|---|
+| **Autoboxing** | `int` → `Integer` | Primitive automatically wrapped into its wrapper class |
+| **Autounboxing** | `Integer` → `int` | Wrapper object automatically unwrapped to its primitive |
+
+### From the code
+
+```java
+public class Demo {
+    public static void main(String[] args) {
+
+        int num = 7;
+        Integer num1 = num;  // autoboxing — int is automatically wrapped into Integer
+
+        int num2 = num1;     // autounboxing — Integer is automatically unwrapped to int
+
+        System.out.println(num2);  // Output: 7
+
+        String str = "12";
+        int num3 = Integer.parseInt(str);  // parsing a String to int using the wrapper class
+
+        System.out.println(num3);  // Output: 12
+    }
+}
+```
+
+**Output:**
+```
+7
+12
+```
+
+> 💡 **Autoboxing** is useful when you need to store primitives in collections (e.g., `ArrayList<Integer>`) since collections only work with objects, not primitives.
+
+> 💡 **Wrapper classes** also provide useful utility methods like `Integer.parseInt()`, `Integer.MAX_VALUE`, `Double.parseDouble()`, etc.
+
+> ⚠️ Repeated autoboxing/unboxing in tight loops can cause a minor performance overhead since new wrapper objects are created each time.
 
 ---
 

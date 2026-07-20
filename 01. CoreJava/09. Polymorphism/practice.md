@@ -1,6 +1,6 @@
-﻿# 🧪 Practice Questions — Polymorphism
+# 🧪 Practice Questions — Polymorphism
 
-> Topics covered: compile-time polymorphism (overloading), runtime polymorphism (overriding), Dynamic Method Dispatch, `final` variable/method/class, `Object` class methods (`toString()`, `equals()`, `hashCode()`), upcasting (implicit), downcasting (explicit), `instanceof`, `ClassCastException`
+> Topics covered: compile-time polymorphism (overloading), runtime polymorphism (overriding), Dynamic Method Dispatch, `final` variable/method/class, `Object` class methods (`toString()`, `equals()`, `hashCode()`), upcasting (implicit), downcasting (explicit), `instanceof`, `ClassCastException`, autoboxing, autounboxing, wrapper classes
 
 ---
 
@@ -8,22 +8,20 @@
 
 ---
 
-### Q1. Dynamic Method Dispatch — Three Shapes
-Create:
-- Class `Shape` with method `draw()` printing `"Drawing shape"`
-- Class `Circle extends Shape` overriding `draw()` to print `"Drawing circle"`
-- Class `Square extends Shape` overriding `draw()` to print `"Drawing square"`
-
-In `main`, use a **single `Shape` reference** `obj` and assign it to a `Shape`, then a `Circle`, then a `Square` object — calling `draw()` after each assignment.
+### Q1. Basic Autoboxing and Autounboxing
+In `main`:
+1. Declare `int a = 42;`
+2. Assign it to `Integer boxed = a;` (autoboxing)
+3. Declare `int unboxed = boxed;` (autounboxing)
+4. Print both `boxed` and `unboxed`.
 
 **Expected Output:**
 ```
-Drawing shape
-Drawing circle
-Drawing square
+42
+42
 ```
 
-**Concepts:** Dynamic method dispatch, runtime polymorphism, single reference — multiple behaviours
+**Concepts:** Autoboxing (primitive → wrapper), autounboxing (wrapper → primitive)
 
 ---
 
@@ -106,22 +104,7 @@ Drawing triangle
 
 ---
 
-### Q7. `final` Method — Prevent Override
-Create class `Vehicle` with a `final` method `fuelType()` that prints `"Petrol"`.  
-Create class `Car extends Vehicle`.  
-In `main`, create a `Car` and call `fuelType()`.  
-In a comment, write what would happen (compile error) if you tried to override `fuelType()` in `Car`.
-
-**Expected Output:**
-```
-Petrol
-```
-
-**Concepts:** `final` method, cannot be overridden
-
----
-
-### Q8. Downcasting with `instanceof`
+### Q7. Downcasting with `instanceof`
 Create:
 - Class `A` with method `show1()` printing `"A show"`
 - Class `B extends A` with method `show2()` printing `"B show"`
@@ -142,48 +125,52 @@ false
 
 ---
 
+### Q8. Parse and Add — Wrapper Utilities
+In `main`:
+1. Create two Strings: `"25"` and `"75"`.
+2. Use `Integer.parseInt()` to convert both to `int`.
+3. Add them and print the result.
+4. Also print `Integer.MAX_VALUE` and `Integer.MIN_VALUE`.
+
+**Expected Output:**
+```
+100
+2147483647
+-2147483648
+```
+
+**Concepts:** `Integer.parseInt()`, wrapper class utility methods, `MAX_VALUE`, `MIN_VALUE`
+
+---
+
 ## 🔴 Hard (2 Questions)
 
 ---
 
-### Q9. Predict the Output — Dynamic Dispatch Tracing
+### Q9. Predict the Output — Autoboxing Equality Trap
 **Before running**, predict the exact output:
 
 ```java
-class A {
-    public void show() { System.out.println("A show"); }
-    public void display() { System.out.println("A display"); }
-}
-class B extends A {
-    public void show() { System.out.println("B show"); }
-}
-class C extends B {
-    public void show() { System.out.println("C show"); }
-    public void display() { System.out.println("C display"); }
-}
-
 public class Demo {
     public static void main(String[] args) {
-        A obj1 = new A();
-        A obj2 = new B();
-        A obj3 = new C();
+        Integer a = 127;
+        Integer b = 127;
+        Integer c = 128;
+        Integer d = 128;
 
-        obj1.show();
-        obj2.show();
-        obj3.show();
-        obj1.display();
-        obj2.display();
-        obj3.display();
+        System.out.println(a == b);       // Line 1
+        System.out.println(c == d);       // Line 2
+        System.out.println(c.equals(d));  // Line 3
     }
 }
 ```
 
 Answer in comments:
-1. For `obj2.display()` — `B` doesn't override `display()`. Which version runs?
-2. For `obj3.display()` — `C` overrides `display()`. Does the reference type (`A`) affect which version runs?
-3. What is the difference between what the compiler checks and what the JVM actually executes?
+1. Why does Line 1 print `true` but Line 2 prints `false`?
+2. What is the **Integer cache** in Java, and what range does it cover?
+3. Why should you always use `.equals()` instead of `==` when comparing wrapper objects?
 
-**Concepts:** Dynamic method dispatch, method resolution order, reference type vs object type
+**Concepts:** Integer cache (-128 to 127), reference comparison vs content comparison, `.equals()` vs `==` on wrapper types
 
 ---
 
