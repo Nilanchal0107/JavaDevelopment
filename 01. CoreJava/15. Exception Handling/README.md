@@ -313,7 +313,7 @@ try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
 > This section is filled in manually after solving practice questions.
 > Do NOT auto-generate this section.
 
-- 
+- catching exceptions inside the method that throws them defeats the purpose (happened twice — Q7 and Q10), and never shadow built-in exception class names.
 
 ---
 
