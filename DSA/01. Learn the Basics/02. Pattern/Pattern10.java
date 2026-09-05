@@ -1,0 +1,38 @@
+/*  Print
+    *
+    **
+    *** 
+    ****
+    *****
+    ****
+    ***
+    **
+    *
+        if input is 5
+*/
+
+import java.util.Scanner;
+
+public class Pattern10 {
+    public static void main(String A[]) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Enter a number : ");
+        int number = input.nextInt();
+
+        for(int i = 0; i < number; i++) {
+            for (int j = 0; j < i + 1; j++) {
+                System.out.print("*");
+            }
+            System.out.println("");
+        }
+
+        for(int i = 0; i < number - 1; i++) {
+            for (int j = number - 1; j > i ; j--) {
+                System.out.print("*");
+            }
+            System.out.println("");
+        }
+        input.close();
+    }   
+}
