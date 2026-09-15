@@ -1,0 +1,68 @@
+package com.nilanchal.jdbclearning;
+import java.sql.*;
+import java.util.Scanner;
+public class LaunchApp8 {
+
+	public static void main(String[] args)
+	{
+		Connection connect = null;
+		PreparedStatement prestatement = null;
+		
+		try  
+			{
+				connect = jdbcUtil.getConnection();
+				
+				//Execute query
+				String query ="UPDATE studentinfo SET sage=? WHERE id=?";
+				prestatement = connect.prepareStatement(query);
+				
+				System.out.println("Please enter info that needs to be updated");
+	            Scanner scan = new Scanner(System.in);
+	            
+	            System.out.println("Kindly enter your id");
+	            Integer id = scan.nextInt();
+
+	            System.out.println("Please enter your age to be updated");
+	            Integer age = scan.nextInt();
+
+	            // Set parameters for the Prepared Statement
+	            prestatement.setInt(2, id);;
+	            prestatement.setInt(1, age);
+	            
+	            int rowAffected = prestatement.executeUpdate();
+
+				
+	          //Process the Result
+	    		if (rowAffected == 0)
+	    		{
+	    			System.out.println("Unable to update data");
+	    		}
+	    		else
+	    		{
+	    			System.out.println("Data updated Successfully");
+	    		} 
+	    		
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			//Close the resources
+			try 
+			{
+				jdbcUtil.closeConnection(connect, prestatement);
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+	}
+
+}

@@ -1,0 +1,22 @@
+ 
+public class LaunchClassForNameEx {
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+}
+
+class Demo
+{
+	static
+	{
+		System.out.println("Static Block");
+	}
+	
+	{
+		System.out.println("Instance block ==> Non static");
+	}
+}

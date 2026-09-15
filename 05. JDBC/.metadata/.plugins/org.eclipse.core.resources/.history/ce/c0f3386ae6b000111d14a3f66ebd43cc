@@ -1,0 +1,11 @@
+package com.nilanchal.jdbclearning;
+import java.sql.*;
+
+public class LaunchApp1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,9 @@
+package com.nilanchal.jdbclearning;
+
+public class LauchApp6 {
+
+	public LauchApp6() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,9 @@
+package com.nilanchal.jdbclearning;
+
+public class LaunchApp11 {
+
+	public LaunchApp1() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

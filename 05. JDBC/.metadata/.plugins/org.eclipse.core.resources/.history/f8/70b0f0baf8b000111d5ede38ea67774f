@@ -1,0 +1,9 @@
+package com.nilanchal.jdbclearning;
+
+public class jdbcUtil {
+
+	public jdbcUtil() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
