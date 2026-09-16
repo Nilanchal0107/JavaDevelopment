@@ -1,0 +1,80 @@
+package com.nilanchal.jdbclearning;
+import java.sql.*;
+import java.util.Scanner;
+public class LaunchApp07 {
+
+	public static void main(String[] args)
+	{
+		Connection connect = null;
+		Statement statement = null;
+		PreparedStatement prestatement = null;s
+
+		try
+			{
+				connect = jdbcUtil.getConnection();
+
+				//Creating Statement
+				//statement = connect.createStatement();
+
+				//Execute query
+				String query ="INSERT INTO studentinfo(id, sname, sage, scity) VALUES (?, ?, ?, ?)";
+				prestatement = connect.prepareStatement(query);
+
+				System.out.println("Please enter the following details to be stored in DB");
+	            Scanner scan = new Scanner(System.in);
+
+	            System.out.println("Enter your id");
+	            Integer id = scan.nextInt();
+
+	            System.out.println("Enter your name");
+	            String name = scan.next();
+
+	            System.out.println("Enter your age");
+	            Integer age = scan.nextInt();
+
+	            System.out.println("Enter your city");
+	            String city = scan.next();
+
+	            // Set parameters for the Prepared Statement
+	            prestatement.setInt(1, id);
+	            prestatement.setString(2, name);
+	            prestatement.setInt(3, age);
+	            prestatement.setString(4, city);
+
+	            int rowAffected = prestatement.executeUpdate();
+
+
+	          //Process the Result
+	    		if (rowAffected == 0)
+	    		{
+	    			System.out.println("Unable to insert data");
+	    		}
+	    		else
+	    		{
+	    			System.out.println("Date inserted Successfully");
+	    		}
+
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			//Close the resources
+			try
+			{
+				jdbcUtil.closeConnection(connect, statement);
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+	}
+
+}

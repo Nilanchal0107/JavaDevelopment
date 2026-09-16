@@ -1,0 +1,38 @@
+package com.nilanchal.jdbclearning;
+import java.sql.*;
+public class LaunchApp04 {
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException
+	{
+		//Load and Register the Driver
+		Class.forName("com.mysql.cj.jdbc.Driver");
+
+		//Establish the connection
+
+		String url="jdbc:mysql://localhost:3306/jdbclearning";
+		String user="root";
+		String password="pass@12323";
+		Connection connect = DriverManager.getConnection(url, user, password);
+
+		//Creating Statement
+		Statement statement = connect.createStatement();
+
+		//Execute query
+		String sql ="DELETE FROM studentinfo where id=1";
+		int rowAffected=statement.executeUpdate(sql);
+		//Process the Result
+		if (rowAffected == 0)
+		{
+			System.out.println("Failed to delete the record");
+		}
+		else
+		{
+			System.out.println("Record deleted successfully");
+		}
+
+		//Close the resources
+		statement.close();
+		connect.close();
+	}
+
+}

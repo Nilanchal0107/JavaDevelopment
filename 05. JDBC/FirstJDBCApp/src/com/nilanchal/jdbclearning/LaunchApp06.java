@@ -1,0 +1,69 @@
+package com.nilanchal.jdbclearning;
+import java.sql.*;
+public class LaunchApp06 {
+
+	public static void main(String[] args)
+	{
+		Connection connect = null;
+		Statement statement = null;
+
+		try
+			{
+				connect = jdbcUtil.getConnection();
+
+				//Creating Statement
+				statement = connect.createStatement();
+
+				//Execute query
+				String sql ="SELECT * FROM studentinfo";
+				boolean status = statement.execute(sql);
+
+				//Process the Result
+				if (status)
+				{
+					System.out.println("If Block");
+
+					//select
+					ResultSet rs = statement.getResultSet();
+				    while(rs.next())
+				    {
+				    	System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getInt(3) + " " + rs.getString(4));
+
+				    }
+				}
+
+				else
+				{
+					System.out.println("Else Block");
+
+					//insert, update, delete
+					int rows=statement.getUpdateCount();
+					if(rows == 0)
+						System.out.println("Operation failed");
+					else
+						System.out.println("Operation performed Successfully");
+				}
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			//Close the resources
+			try
+			{
+				jdbcUtil.closeConnection(connect, statement);
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+	}
+
+}
